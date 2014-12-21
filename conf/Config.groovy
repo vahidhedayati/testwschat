@@ -120,10 +120,8 @@ wschat.defaultperm='admin'
 wschat.rooms = ['fred','smith','room3']
 wschat.showtitle="no"
 wschat.hostname='192.168.1.6:8080'
-
-
 stunServers {
-	iceServers=[
-		[url: 'stun:stun.l.google.com:19302']
-	]
+iceServers=[
+[url: 'stun:stun.l.google.com:19302']
+]
 }

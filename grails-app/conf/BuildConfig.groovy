@@ -74,6 +74,7 @@ grails.project.dependency.resolution = {
         //compile ":coffee-asset-pipeline:1.7.0"
         //compile ":handlebars-asset-pipeline:1.3.0.3"
 		//compile ":wschat:0.5"
+	//compile ":wschat:1.2" 
     }
 }
 grails.plugin.location.'wschat' = "../grails-wschat-plugin"
