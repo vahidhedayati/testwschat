@@ -7,7 +7,7 @@ import javax.websocket.Session
 
 
 public  class MyChatClientService extends WsChatClientService {
-
+	//PageRenderer groovyPageRenderer
 	@Override
 	public void processAct(Session userSession, boolean pm,String actionthis, String sendThis,
 		String divId, String msgFrom, boolean strictMode, boolean masterNode) {
@@ -37,5 +37,20 @@ public  class MyChatClientService extends WsChatClientService {
 			userSession.basicRemote.sendText("${addon}${sendThis}")
 			userSession.basicRemote.sendText("${sendThis}")
 		}
+		def g = new grails.plugin.wschat.client.WsChatClientTagLib()
+		//g.updateView(message: sendThis, divId:divId)
+		
+		def model=[message:sendThis, divId:divId]
+		//wsChatClientTagLib.updateView(message: sendThis)
+		//def g = grailsApplication.mainContext.getBean('grails.plugin.wschat.client.WsChatClientTagLib')
+		//wsChatClientTagLib.updateView(message: sendThis, divId:divId)
+		/*
+		String html =sendThis
+		//groovyPageRenderer.render(template: '/wsChat/clientUpdate', model:model)
+		def response = RequestContextHolder.currentRequestAttributes().response
+		response.setStatus(200)
+		response.setContentType('text/html')
+		response.writer.write(html)
+		*/
 	}
 }

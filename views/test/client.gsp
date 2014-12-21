@@ -13,7 +13,7 @@ user="clientuser"
 receiver="masteruser"
 message="do_task_1"
 strictMode="false"
-actionMap="['performed_task_1': 'do_task_2', 'performed_task_2': 'do_task_3']"
+actionMap="['performed_task_1': 'do_task_2', 'performed_task_2': 'do_task_3','performed_task_3': 'close_my_connection' ]"
 />
 -
 </body>
