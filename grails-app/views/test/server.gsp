@@ -15,7 +15,7 @@ strictMode="false"
 masterNode="true"
 divId="myNode"
 message="hi this is an automated websocket SERVER message"
-actionMap="['do_task_1': 'performed_task_1', 'do_task_2': 'performed_task_2', 'do_task_3': 'performed_task_3', 'list_domain': 'testwschat.userbase']"
+actionMap="['do_task_1': 'performed_task_1', 'do_task_2': 'performed_task_2', 'do_task_3': 'performed_task_3', 'close_my_connection': 'close_connection', 'list_domain': 'testwschat.userbase']"
 />
 -
 <div id="myNode">
