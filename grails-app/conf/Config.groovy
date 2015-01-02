@@ -115,15 +115,17 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
-
 wschat.defaultperm='admin'
 wschat.rooms = ['fred','smith','room3']
 wschat.showtitle="no"
 wschat.hostname='192.168.1.6:8080'
-
-
-stunServers {
-	iceServers=[
-		[url: 'stun:stun.l.google.com:19302']
-	]
-}
+stunServers { iceServers=[ [url: 'stun:stun.l.google.com:19302'] ] }
+//wschat.send.leftroom='no'
+//wschat.send.joinroom='no'
+//config.frontenduser='_frontend'
+//config.storeForFrontEnd=false
+wschat.dbstore=true
+wschat.dbstore_pm_messages=true
+wschat.dbstore_room_messages=true
+wschat.debug=true
+//wschat.dbstore_user_messages=true

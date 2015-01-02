@@ -7,13 +7,20 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-<chat:clientConnect
+<!--  chat:clientConnect
 user="randomUser" 
 message="haha I am just a random client sending a message and disconnecting"
 
 autodisco="true"
 strictMode="false"
-/>
+/ -->
+
+<chat:includeAllStyle/>
+
+ <chat:connect 
+ chatuser="testuser2"
+ profile="[email: 'test2@example.com']" 
+ />
 -
 
 </body>
