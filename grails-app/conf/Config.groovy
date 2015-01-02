@@ -129,3 +129,4 @@ wschat.dbstore_pm_messages=true
 wschat.dbstore_room_messages=true
 wschat.debug=true
 //wschat.dbstore_user_messages=true
+//config.storeForFrontEnd="true"

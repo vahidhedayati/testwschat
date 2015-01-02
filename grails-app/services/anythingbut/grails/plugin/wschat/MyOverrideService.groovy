@@ -1,4 +1,4 @@
-package grails.plugin.wschat.myclient
+package anythingbut.grails.plugin.wschat
 
 import grails.converters.JSON
 import grails.plugin.wschat.client.WsClientProcessService
@@ -9,32 +9,25 @@ import org.codehaus.groovy.grails.web.json.JSONArray
 import org.codehaus.groovy.grails.web.json.JSONObject
 
 
+class MyOverrideService  extends WsClientProcessService {
 
-public  class MyChatClientService extends WsClientProcessService {
-	def grailsApplication
-	def chatClientListenerService
-	def wsChatUserService
-	// CLIENT SERVER CHAT VIA ChatClientListenerService method aka
-	// This is server processing of taglib call:
-	// <chat:clientWsConnect gsp
-	// A demo and for you to change to what you want your backend to do
-	// I have commented out a disco = false
 	@Override
 	public void processResponse(Session userSession, String message) {
 		String username = userSession.userProperties.get("username") as String
-
+		println "OVERRIDED SERVICE VALUES "
+		println "${message}"
+		
 		//println "DEBUG ${username}: $message"
 
 		// Disconnect automatically
 		// set to false (commented out) in this example when a command is receieved
 		boolean disco = true
-
 		JSONObject rmesg=JSON.parse(message)
 
 		String actionthis=''
 		String msgFrom = rmesg.msgFrom
 		boolean pm = false
-
+		
 		String disconnect = rmesg.system
 		if (rmesg.privateMessage) {
 
@@ -138,9 +131,6 @@ public  class MyChatClientService extends WsClientProcessService {
 		}
 	}
 
-	//OVERRIDE AND SET CUSTOM ACTIONS
-	// CLIENT SERVER CHAT VIA WsChatClientService method aka
-	// <chat:clientConnect gsp call
 	@Override
 	public void processAct(String user, boolean pm,String actionthis, String sendThis,
 			String divId, String msgFrom, boolean strictMode, boolean masterNode) {
@@ -164,9 +154,11 @@ public  class MyChatClientService extends WsClientProcessService {
 			}
 		}
 		
+		println "OVERRIDED SERVICE VALUES "
+		println "${actionthis} ${sendThis}"
 		
 		
-		
+		// SET CUSTOM ACTIONS
 		if (masterNode) {
 			if (actionthis== 'do_task_1') {
 				// TODO something on master node that has mappings to do_task_1
@@ -179,6 +171,7 @@ public  class MyChatClientService extends WsClientProcessService {
 				println "something on master node that has mappings to do_task_3 TASK3"
 			}
 		}
+		
 		
 		
 		/*
@@ -213,6 +206,4 @@ public  class MyChatClientService extends WsClientProcessService {
 			}
 		}
 	}
-
-
 }
