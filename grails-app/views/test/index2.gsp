@@ -18,7 +18,7 @@ strictMode="false"
 <chat:includeAllStyle/>
 
  <chat:connect 
- chatuser="testuser2"
+ chatuser="testuser3"
  profile="[email: 'test2@example.com']" 
  usermenujs="mymenu.js"
  />

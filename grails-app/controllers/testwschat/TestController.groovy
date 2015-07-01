@@ -11,7 +11,7 @@ class TestController {
 	def client() { }
 	
     def index() { }
-	
+	def index2() { }
 	def newPage() {}
 	def eventPage() {
 		def myJson = new JsonBuilder()
