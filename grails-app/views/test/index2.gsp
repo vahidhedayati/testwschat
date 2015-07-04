@@ -7,22 +7,38 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-<!--  chat:clientConnect
-user="randomUser" 
-message="haha I am just a random client sending a message and disconnecting"
 
-autodisco="true"
-strictMode="false"
-/ -->
 
-<chat:includeAllStyle/>
+Loaded : ${params.chatType}.js <br/>
+<pre>
+&lt;chat:includeAllStyle
+addLayouts="true"   //optional default is true can be true or "$\{true}"
+jquery="true"  //optional default is true can be true or "$\{true}"
+jqueryui="true"  //optional default is true can be true or "$\{true}"
+bootstrap="true"  //optional default is true can be true or "$\{true}"
+ /&gt;
+ 
+&ltchat:connect 
+ chatuser="${params.username}"     // required user
+ usermenujs="${params.chatType}.js"  //optional not set will default to plugin 
+ profile="[email: '${params.username}2@example.com']"   //optional - if you wish to create user details as well
+ /&gt
+
+</pre>
+
+<chat:includeStyle
+addLayouts="true"
+jquery="true"
+jqueryui="true"
+bootstrap="true"
+ />
 
  <chat:connect 
- chatuser="testuser3"
- profile="[email: 'test2@example.com']" 
- usermenujs="mymenu.js"
+ chatuser="${params.username}"
+ usermenujs="${params.chatType}.js"
+ profile="[email: '${params.username}2@example.com']" 
  />
--
 
+-
 </body>
 </html>

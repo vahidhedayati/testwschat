@@ -11,6 +11,8 @@ import org.codehaus.groovy.grails.web.json.JSONObject
 
 class MyOverrideService  extends WsClientProcessService {
 
+	def grailsApplication
+	
 	@Override
 	public void processResponse(Session userSession, String message) {
 		String username = userSession.userProperties.get("username") as String
@@ -27,10 +29,10 @@ class MyOverrideService  extends WsClientProcessService {
 		String actionthis=''
 		String msgFrom = rmesg.msgFrom
 		boolean pm = false
-		
+		println "1"
 		String disconnect = rmesg.system
 		if (rmesg.privateMessage) {
-
+			println "2 --"
 			JSONObject rmesg2=JSON.parse(rmesg.privateMessage)
 			String command = rmesg2.command
 			if (command) {
@@ -47,7 +49,7 @@ class MyOverrideService  extends WsClientProcessService {
 
 				def jsonData = (data as JSON).toString()
 
-
+				println "-- 3 ${jsonData}"
 				//println "${event} ${context} ${jsonData}"
 				//println "${strictMode} ${masterNode} ${autodisco} ${frontenduser}"
 
@@ -81,21 +83,25 @@ class MyOverrideService  extends WsClientProcessService {
                                     ]
                         }
                     """
-					
+					println "--- 4 "
 					chatClientListenerService.sendPM(userSession, msgFrom ,sMessage.replaceAll("\t","").replaceAll("\n",""))
+					println "--- 5"
 				}
 			}
 		}
 		if (disconnect && disconnect == "disconnect") {
+		println "___ NOTHING TO DO DISCONNECTING  AS REQUESTED"
 			chatClientListenerService.disconnect(userSession)
 		}
 		if (msgFrom ) {
+			println "-- 8 "
 			actionthis = rmesg.privateMessage
 			pm = true
 		}
 
 		def rmessage = rmesg.message
 		if (rmessage) {
+			println "--- 9"
 			def matcher = (rmessage =~ /(.*): (.*)/)
 			if (matcher.matches()){
 				msgFrom = matcher[0][1]
@@ -104,8 +110,9 @@ class MyOverrideService  extends WsClientProcessService {
 				}
 			}
 		}
-
+		println "--- 10"
 		if (actionthis) {
+			println "--- 11"
 			if (actionthis == 'close_connection') {
 				chatClientListenerService.disconnect(userSession)
 			}else if (actionthis == 'close_my_connection') {
@@ -121,6 +128,7 @@ class MyOverrideService  extends WsClientProcessService {
 						chatClientListenerService.sendMessage(userSession, ">>HAVE DONE \n"+actionthis)
 					}
 				}else{
+				println "___ NOTHING TO DO DISCONNECTING  assadasdasd"
 					// DISCONNECTING HERE OTHERWISE WE WILL GET A LOOP OF REPEATED MESSAGES
 					if (disco) {
 						chatClientListenerService.disconnect(userSession)
@@ -135,9 +143,9 @@ class MyOverrideService  extends WsClientProcessService {
 	public void processAct(String user, boolean pm,String actionthis, String sendThis,
 			String divId, String msgFrom, boolean strictMode, boolean masterNode) {
 			Session userSession=wsChatUserService.usersSession(user)
-			
+			println "--- 12"
 		String username = userSession.userProperties.get("username") as String
-		
+		println "--- 13 $username"
 		String addon="[PROCESS]"
 		
 		def myMap=[pm:pm, actionThis: actionthis, sendThis: sendThis, divId:divId,
@@ -145,13 +153,13 @@ class MyOverrideService  extends WsClientProcessService {
 
 		if (masterNode) {
 			addon="[PROCESSED]"
-			if (saveClients) {
+			//if (getConfig('storeForFrontEnd')=='true') {
 				clientMaster.add(myMap)
-			}
+			//}
 		}else{
-			if (saveClients) {
+			//if (getConfig('storeForFrontEnd')=='true') {
 				clientSlave.add(myMap)
-			}
+			//}
 		}
 		
 		println "OVERRIDED SERVICE VALUES "
@@ -181,12 +189,12 @@ class MyOverrideService  extends WsClientProcessService {
 		 */
 		
 		if ( masterNode == false ) {
-			boolean found = wsChatUserService.findUser(user+frontend)
+			boolean found = wsChatUserService.findUser(user+getConfig('frontend'))
 			int counter=0
 			if (found==false) {
 				while (found==false && (counter < 3) ) {
 					sleep(600)
-					found = wsChatUserService.findUser(user+frontend)
+					found = wsChatUserService.findUser(user+getConfig('frontend'))
 					counter++
 				}
 			}
@@ -206,4 +214,8 @@ class MyOverrideService  extends WsClientProcessService {
 			}
 		}
 	}
+			
+		def getConfig(String configProperty) {
+			grailsApplication.config.wschat[configProperty] ?: ''
+		}
 }

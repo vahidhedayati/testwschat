@@ -103,6 +103,9 @@ log4j.main = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
+	
+	error 'grails.plugin.wschat'  //capture wschat errors
+	debug 'grails.plugin.wschat' //capture wschat debug 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -113,20 +116,24 @@ log4j.main = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
+           'net.sf.ehcache.hibernate',
+		   'grails.plugin.wschat'  //capture wschat errors
 }
 wschat.defaultperm='admin'
 wschat.rooms = ['fred','smith','room3']
 wschat.showtitle="no"
-wschat.hostname='localhost:8080'
+//wschat.hostname='localhost:8080'
+wschat.hostname='192.168.1.196:8080'
 stunServers { iceServers=[ [url: 'stun:stun.l.google.com:19302'] ] }
-//wschat.send.leftroom='no'
-//wschat.send.joinroom='no'
-//config.frontenduser='_frontend'
-//config.storeForFrontEnd=false
+wschat.send.leftroom='yes'
+wschat.send.joinroom='yes'
+wschat.frontenduser='_frontend'
+wschat.storeForFrontEnd=true
 wschat.dbstore=true
 wschat.dbstore_pm_messages=true
 wschat.dbstore_room_messages=true
 wschat.debug=true
+
 //wschat.dbstore_user_messages=true
-//config.storeForFrontEnd="true"
+
+
