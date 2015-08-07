@@ -135,5 +135,13 @@ wschat.dbstore_room_messages=true
 wschat.debug=true
 
 //wschat.dbstore_user_messages=true
+wschat.addFile='false'
+wschat.addGame='false'
 
+wschat.liveChatAssistant='assistant' // the chat client assistant name.. so if userx requests chat .. userx_assistant = this what this is . 
+wschat.liveChatPerm='admin'  // this is the group of users that livechat belongs to and if those uses have an email address in profile they will also be emailed
+wschat.liveContactEmail='youremail@gmail.com' // this is the hard coded live chat email 
+wschat.liveChatUsername='masterv'  // this is the nickname upon them joining a live request
+wschat.liveContactName='Mr V'  // this is the person that email title is set to
+wschat.emailFrom="me@domain.com"  //this is for sending emails
 

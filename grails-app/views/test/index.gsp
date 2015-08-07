@@ -7,6 +7,9 @@
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
+	<br/>
+
+<br/>
 
 <g:form action="index2">
 <label>Chat username</label><g:textField name="username"/>
