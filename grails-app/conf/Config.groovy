@@ -144,4 +144,6 @@ wschat.liveContactEmail='youremail@gmail.com' // this is the hard coded live cha
 wschat.liveChatUsername='masterv'  // this is the nickname upon them joining a live request
 wschat.liveContactName='Mr V'  // this is the person that email title is set to
 wschat.emailFrom="me@domain.com"  //this is for sending emails
-
+wschat.store_live_messages=true  // store records of offline messaging
+wschat.enable_AI=true  // enable Aritificial Intelligence ? refer to ChatAI.groovy for example and understanding
+wschat.liveChatTitle="My Live chat"

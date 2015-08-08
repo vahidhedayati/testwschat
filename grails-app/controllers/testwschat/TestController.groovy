@@ -33,4 +33,8 @@ class TestController {
 		
 
 	}
+	
+	def livechat() { 
+		
+	}
 }

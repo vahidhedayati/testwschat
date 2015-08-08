@@ -21,7 +21,8 @@
 		<div id="grailsLogo" role="banner"><a href="http://grails.org"><asset:image src="grails_logo.png" alt="Grails"/></a></div>
 		
 		<b>LIVE CHAT EXAMPLES: 
-		Random HTTP Session Chat <chat:customerChatButton user="somenewuser"/>
+		Random HTTP Session Chat <chat:customerChatButton user="somenewuser2"/>
+		</b>
 		<br>
 		
 
