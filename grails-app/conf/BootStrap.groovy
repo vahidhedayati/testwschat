@@ -1,4 +1,5 @@
 import grails.plugin.wschat.ChatAI
+import grails.plugin.wschat.ChatBadWords
 
 class BootStrap {
 
@@ -10,7 +11,13 @@ class BootStrap {
 		ChatAI.findOrSaveWhere(input:'opening person', output: 'Opening person is Sam' )
 		ChatAI.findOrSaveWhere(input:'opening person drives', output: 'Some car' )
 		ChatAI.findOrSaveWhere(input:'opening hours on a sunday', output: 'Not open on sunday' )
-		ChatAI.findOrSaveWhere(input:'kickbot', output: 'close_connection' )
+	//	ChatAI.findOrSaveWhere(input:'kickbot', output: 'close_connection' )
+		
+		ChatBadWords.findOrSaveWhere(input:'poo', output: '/kickuser' )
+		//minutes months hours years days
+		ChatBadWords.findOrSaveWhere(input:'pants', output: '/banuser', duration: 1  ,period: 'minutes')
+		ChatBadWords.findOrSaveWhere(input:'bastard', output: '/banuser', duration: 1  ,period: 'months')
+		
 		
     }
     def destroy = {
