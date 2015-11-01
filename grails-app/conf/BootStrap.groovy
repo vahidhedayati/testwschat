@@ -11,6 +11,8 @@ class BootStrap {
 		ChatAI.findOrSaveWhere(input:'opening person', output: 'Opening person is Sam' )
 		ChatAI.findOrSaveWhere(input:'opening person drives', output: 'Some car' )
 		ChatAI.findOrSaveWhere(input:'opening hours on a sunday', output: 'Not open on sunday' )
+		ChatAI.findOrSaveWhere(input:'weekdays', output: 'Do you mean which days are week days? This would be Monday to Friday' )
+		
 	//	ChatAI.findOrSaveWhere(input:'kickbot', output: 'close_connection' )
 		
 		ChatBadWords.findOrSaveWhere(input:'poo', output: '/kickuser' )

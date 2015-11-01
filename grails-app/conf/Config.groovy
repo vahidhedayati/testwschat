@@ -94,7 +94,35 @@ environments {
         // TODO: grails.serverURL = "http://www.changeme.com"
     }
 }
-
+/*
+log4j = {
+	appenders {
+		console name: 'stdout', layout: pattern(conversionPattern: '%d{yyyy-MM-dd HH:mm:ss,SSS Z} [%t] %-5p %c{1}:%L %x - %m%n')
+	}
+	
+	root {
+		info 'stdout'
+	}
+	
+	error stdout: 'org.codehaus.groovy.grails.web.servlet',        // controllers
+	'org.codehaus.groovy.grails.web.pages',          // GSP
+	'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+	'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+	'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+	'org.codehaus.groovy.grails.commons',            // core / classloading
+	'org.codehaus.groovy.grails.plugins',            // plugins
+	'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+	'org.springframework',
+	'org.hibernate',
+	'net.sf.ehcache.hibernate',
+	'grails.plugin.wschat'  //capture wschat errors
+	info  stdout:'grails.plugin.wschat.*'
+	debug stdout: 'org.grails.plugin.wschat.*',
+	'grails.plugin.wschat.*',
+	' grails.plugin.wschat.auth.WsChatAuthService'
+}
+*/
+/*
 // log4j configuration
 log4j.main = {
     // Example of changing the log pattern for the default console appender:
@@ -102,10 +130,20 @@ log4j.main = {
     //appenders {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
-
 	
+	appenders {
+		console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
+	}
+	
+	root {
+		error 'stdout'
+		additivity = true
+	}
+	
+	
+	info  'grails.plugin.wschat'
 	error 'grails.plugin.wschat'  //capture wschat errors
-	debug 'grails.plugin.wschat' //capture wschat debug 
+	debug 'grails.plugin.wschat'
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
            'org.codehaus.groovy.grails.web.pages',          // GSP
            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
@@ -118,7 +156,41 @@ log4j.main = {
            'org.hibernate',
            'net.sf.ehcache.hibernate',
 		   'grails.plugin.wschat'  //capture wschat errors
+	all  'grails.plugin.wschat'
+	
+	debug stdout: ['grails.plugin.wschat']
+		   
 }
+*/
+
+
+log4j = {
+		error   'org.codehaus.groovy.grails.web.servlet',        // controllers
+				'org.codehaus.groovy.grails.web.pages',          // GSP
+				'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+				'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+				'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+				'org.codehaus.groovy.grails.commons',            // core / classloading
+				'org.codehaus.groovy.grails.plugins',            // plugins
+				'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+				'org.springframework',
+				'org.hibernate',
+				'net.sf.ehcache.hibernate',
+				'grails.plugin.wschat'
+				
+		info    'grails',
+				'grails.app.task',  // this is for quartz jobs
+				'grails.app.service',
+				'grails.app.controller',
+				'grails.plugin.wschat'
+		debug 'grails.plugin.wschat'
+		warn 'grails.plugin.wschat'
+				
+
+}
+
+
+
 wschat.defaultperm='admin'
 wschat.rooms = ['fred','smith','room3']
 wschat.showtitle='no'
@@ -139,11 +211,11 @@ wschat.addFile='false'
 wschat.addGame='false'
 
 wschat.liveChatAssistant='assistant' // the chat client assistant name.. so if userx requests chat .. userx_assistant = this what this is . 
-wschat.liveChatPerm='admin'  // this is the group of users that livechat belongs to and if those uses have an email address in profile they will also be emailed
-wschat.liveContactEmail='youremail@gmail.com' // this is the hard coded live chat email 
+wschat.liveChatPerm='liveChat'  // this is the group of users that livechat belongs to and if those uses have an email address in profile they will also be emailed
+wschat.liveContactEmail='badvad@gmail.com' // this is the hard coded live chat email 
 wschat.liveChatUsername='masterv'  // this is the nickname upon them joining a live request
 wschat.liveContactName='Mr V'  // this is the person that email title is set to
-wschat.emailFrom="me@domain.com"  //this is for sending emails
+wschat.emailFrom="badvad@gmail.com"  //this is for sending emails
 wschat.store_live_messages=true  // store records of offline messaging
 wschat.enable_AI=true  // enable Aritificial Intelligence ? refer to ChatAI.groovy for example and understanding
 wschat.liveChatTitle="My Live chat"
