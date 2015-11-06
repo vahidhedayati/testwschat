@@ -1,4 +1,4 @@
-
+ 
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,7 +8,13 @@
 	</head>
 	<body>
 
+<chat:liveChat user="${params.user}" roomName="${params.room }"
+inactiveLCTitle="${inactiveLCTitle}" 
+activeLCTitle="${activeLCTitle}"
+inactiveLCBody="${inactiveLCBody}"
+activeLCBody="${activeLCBody}"
+/>
 
-<chat:liveChat user="${params.user}" roomName="${params.room }" />
+${inactiveLCTitle }  ${inactiveLCTitle.getClass() }
 </body>
 </html>
