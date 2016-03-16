@@ -194,7 +194,8 @@ log4j = {
 wschat.defaultperm='admin'
 wschat.rooms = ['fred','smith','room3']
 wschat.showtitle='no'
-wschat.hostname='localhost:8080'
+//wschat.hostname='localhost:8080'
+
 //wschat.hostname='192.168.1.196:8080'
 stunServers { iceServers=[ [url: 'stun:stun.l.google.com:19302'] ] }
 wschat.send.leftroom='yes'
@@ -221,7 +222,7 @@ wschat.enable_AI=true  // enable Aritificial Intelligence ? refer to ChatAI.groo
 wschat.liveChatTitle="My Live chat"
 wschat.liveChatAskName='true'
 wschat.liveChatAskEmail='true'
-wschat.enable_Chat_Bot=true
+wschat.enable_Chat_Bot='false'
 wschat.enable_Chat_AI=true
 wschat.enable_Chat_BadWords=true
 wschat.enableSecurity='false'
@@ -262,3 +263,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**':        ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
 
+wschat.hostname='localhost:8443'
+wschat.wsProtocol='wss'
+wschat.siteProtocol='https'
