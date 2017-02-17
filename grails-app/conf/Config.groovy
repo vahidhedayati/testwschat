@@ -263,6 +263,6 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
         '/**':        ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]
 
-wschat.hostname='localhost:8443'
-wschat.wsProtocol='wss'
-wschat.siteProtocol='https'
+wschat.hostname='localhost:8080'
+wschat.wsProtocol='ws'
+wschat.siteProtocol='http'
